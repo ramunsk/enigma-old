@@ -14,7 +14,7 @@ class Rotor
 			knownRotor.leftSide.charAt(position)
 
 		@getBackwardChar = (char) ->
-			index = knownRotor.leftSide.indexOf(char.toUpper())
+			index = knownRotor.leftSide.indexOf(char.toUpperCase())
 			offset = getOffset()
 			position = index + offset
 			position = position - knownRotor.rightSide.length if position >= knownRotor.rightSide.length
