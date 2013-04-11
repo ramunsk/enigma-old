@@ -17,7 +17,7 @@ describe "rotor deck. setup - reflector A, rotor right - III, rotor middle - II,
 		rotorLeft = new Rotor KnownRotors.I
 		rotorLeft.setPosition "A"
 
-		rotorDeck = new RotorDeck reflector, rotorLeft, rotorMiddle, rotorRight
+		rotorDeck = new RotorDeck null, reflector, rotorLeft, rotorMiddle, rotorRight
 
 	it 'should return I, if A is passed', ->
 		result = rotorDeck.encrypt("A")
@@ -51,7 +51,7 @@ describe "rotor deck. setup - reflector A, rotor right - III, rotor middle - II,
 		rotorLeft = new Rotor KnownRotors.I
 		rotorLeft.setPosition "A"
 
-		rotorDeck = new RotorDeck reflector, rotorLeft, rotorMiddle, rotorRight
+		rotorDeck = new RotorDeck null, reflector, rotorLeft, rotorMiddle, rotorRight
 
 	it 'should return E, if A is passed', ->
 		result = rotorDeck.encrypt "A"
@@ -79,7 +79,7 @@ describe "RotorDeck::advanceRotors()", ->
 		rotorLeft = new Rotor KnownRotors.I, true
 		rotorLeft.setPosition "A"
 
-		rotorDeck = new RotorDeck reflector, rotorLeft, rotorMiddle, rotorRight
+		rotorDeck = new RotorDeck null, reflector, rotorLeft, rotorMiddle, rotorRight
 
 	it 'should turn from AAA to AAB', ->
 		rotorDeck.advanceRotors()
@@ -112,7 +112,7 @@ describe "rotor deck. encrypting: achtung", ->
 		rotorRight = new Rotor KnownRotors.III, true
 		rotorMiddle = new Rotor KnownRotors.II, true
 		rotorLeft = new Rotor KnownRotors.I, true
-		rotorDeck = new RotorDeck reflector, rotorLeft, rotorMiddle, rotorRight
+		rotorDeck = new RotorDeck null, reflector, rotorLeft, rotorMiddle, rotorRight
 
 	it 'encrypt/decrypt: ACHTUNG', ->
 		word = "ACHTUNG"

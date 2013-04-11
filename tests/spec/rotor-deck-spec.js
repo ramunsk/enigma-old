@@ -16,7 +16,7 @@
       rotorMiddle.setPosition("A");
       rotorLeft = new Rotor(KnownRotors.I);
       rotorLeft.setPosition("A");
-      return rotorDeck = new RotorDeck(reflector, rotorLeft, rotorMiddle, rotorRight);
+      return rotorDeck = new RotorDeck(null, reflector, rotorLeft, rotorMiddle, rotorRight);
     });
     it('should return I, if A is passed', function() {
       var result;
@@ -60,7 +60,7 @@
       rotorMiddle.setPosition("A");
       rotorLeft = new Rotor(KnownRotors.I);
       rotorLeft.setPosition("A");
-      return rotorDeck = new RotorDeck(reflector, rotorLeft, rotorMiddle, rotorRight);
+      return rotorDeck = new RotorDeck(null, reflector, rotorLeft, rotorMiddle, rotorRight);
     });
     it('should return E, if A is passed', function() {
       var result;
@@ -92,7 +92,7 @@
       rotorMiddle.setPosition("A");
       rotorLeft = new Rotor(KnownRotors.I, true);
       rotorLeft.setPosition("A");
-      return rotorDeck = new RotorDeck(reflector, rotorLeft, rotorMiddle, rotorRight);
+      return rotorDeck = new RotorDeck(null, reflector, rotorLeft, rotorMiddle, rotorRight);
     });
     it('should turn from AAA to AAB', function() {
       var result;
@@ -134,7 +134,7 @@
       rotorRight = new Rotor(KnownRotors.III, true);
       rotorMiddle = new Rotor(KnownRotors.II, true);
       rotorLeft = new Rotor(KnownRotors.I, true);
-      return rotorDeck = new RotorDeck(reflector, rotorLeft, rotorMiddle, rotorRight);
+      return rotorDeck = new RotorDeck(null, reflector, rotorLeft, rotorMiddle, rotorRight);
     });
     it('encrypt/decrypt: ACHTUNG', function() {
       var char, decryptedText, encrypt, encryptedText, word, _i, _j, _len, _len1, _ref, _ref1;
