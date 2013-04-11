@@ -1,7 +1,29 @@
 class RotorDeck
-	constructor: (@reflector, @rotorLeft, @rotorMiddle, @rotorRight) ->
+	constructor: (@rotorsCollection, @reflector, @rotorLeft, @rotorMiddle, @rotorRight) ->
 		events = {}
 
+		#console.log(@["rotorLeft"])
+		rotorDeck = $(@)
+		that = @
+
+		$(@rotorsCollection).find(".rotor_button").each(
+			->
+				$(@).on(
+					'click'
+					->
+						rotorPosition = $(@).data('position')
+						direction = $(@).data('direction')
+						affectedRotor = that["rotor#{rotorPosition}"]
+						if direction is 'F'
+							affectedRotor.advanceForward()
+							console.log('FF')
+						else if direction is 'B'
+							affectedRotor.advanceBackward()
+							console.log('BB')
+				)
+		)
+
+		
 		@rotorRight.on(
 			"turnover"
 			-> rotorMiddle.advanceForward()
@@ -42,10 +64,10 @@ class RotorDeck
 			raiseEvent 'characterEncrypted', {result: result}
 			return result
 
-
 		@advanceRotors = () ->
 			rotorRight.advanceForward()
 			return
+
 
 @RotorDeck = RotorDeck
 

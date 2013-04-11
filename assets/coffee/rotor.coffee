@@ -60,9 +60,9 @@ class Rotor
 			return
 			
 		@advanceBackward = () ->
-			index = knownRotor.right.indexOf(currentPosition)
+			index = knownRotor.rightSide.indexOf(currentPosition)
 			index--
-			index = knownRotor.right.length - 1 if index < 0
+			index = knownRotor.rightSide.length - 1 if index < 0
 			return
 
 		@on = (event, callback) ->

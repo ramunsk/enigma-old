@@ -60,6 +60,8 @@
 }
 
 .rotors_container .rotor ul.rottor_letters {
+	max-height: 50px;
+	overflow: hidden;
 	padding-left: 13px;
 	list-style: none;
 }

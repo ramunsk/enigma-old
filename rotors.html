@@ -7,7 +7,7 @@
 <body>
 	<div class="rotors_container">
 		<div class="rotor">
-			<input type="button" class="rotor_up" value="&#x25B2">
+			<input type="button" data-position="Left" data-direction="F" class="rotor_button" value="&#x25B2">
 			<ul class="rottor_letters">
 				<li class="letter">Z</li>
 				<li class="letter">Y</li>
@@ -36,11 +36,11 @@
 				<li class="letter">B</li>
 				<li class="letter">A</li>
 			</ul>
-			<input type="button" class="rotor_down" value="&#x25BC">
+			<input type="button" data-position="Left" data-direction="B" class="rotor_button" value="&#x25BC">
 		</div>
 
 		<div class="rotor">
-			<input type="button" class="rotor_up" value="&#x25B2" >
+			<input type="button" data-position="Middle" data-direction="F" class="rotor_button" value="&#x25B2" >
 			<ul class="rottor_letters">
 				<li class="letter">Z</li>
 				<li class="letter">Y</li>
@@ -69,11 +69,11 @@
 				<li class="letter">B</li>
 				<li class="letter">A</li>
 			</ul>
-			<input type="button" class="rotor_down" value="&#x25BC">
+			<input type="button" data-position="Middle" data-direction="B" class="rotor_button" value="&#x25BC">
 		</div>
 
 		<div class="rotor">
-			<input type="button" class="rotor_up" value="&#x25B2">
+			<input type="button" data-position="Right" data-direction="F" class="rotor_button" value="&#x25B2">
 			<ul class="rottor_letters">
 				<li class="letter">Z</li>
 				<li class="letter">Y</li>
@@ -102,13 +102,12 @@
 				<li class="letter">B</li>
 				<li class="letter">A</li>
 			</ul>
-			<input type="button" class="rotor_down" value="&#x25BC">
+			<input type="button" data-position="Right" data-direction="B" class="rotor_button" value="&#x25BC">
 		</div>
 	</div>
 
 	<script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
 	<script>window.jQuery || document.write('<script src="assets/js/jquery-1.9.1.min.js")><\/script>')</script>
-	<script src="assets/coffee/sounds.js"></script>
 	<script src="assets/coffee/keyboard.js" type="text/javascript"></script>
 	<script src="assets/coffee/known-rotors.js" type="text/javascript"></script>
 	<script src="assets/coffee/known-reflectors.js"></script>
