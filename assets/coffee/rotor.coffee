@@ -3,20 +3,29 @@ class Rotor
 		currentPosition = knownRotor.rightSide.charAt(0)
 		events = {}
 
+		getOffset = () ->
+			knownRotor.rightSide.indexOf currentPosition
+
 		@getForwardChar = (char) ->
-			index = knownRotor.rightSide.indexOf(char.toUpper())
-			knownRotor.leftSide.charAt(index)
+			index = knownRotor.rightSide.indexOf(char.toUpperCase())
+			offset = getOffset()
+			position = index + offset
+			position = position - knownRotor.rightSide.length if position >= knownRotor.rightSide.length
+			knownRotor.leftSide.charAt(position)
 
 		@getBackwardChar = (char) ->
 			index = knownRotor.leftSide.indexOf(char.toUpper())
-			knownRotor.rightSide.charAt(index)
+			offset = getOffset()
+			position = index + offset
+			position = position - knownRotor.rightSide.length if position >= knownRotor.rightSide.length
+			knownRotor.rightSide.charAt(position)
 		
 		@getPosition = (char) ->
 			currentPosition
 
-		#@setPosition = (char) ->
-		#	if knownRotor.rightSide.indexOf(char) >= 0
-		#		currentPosition = char
+		@setPosition = (char) ->
+			if knownRotor.rightSide.indexOf(char) >= 0
+				currentPosition = char
 
 		@advanceForward = () ->
 			index = knownRotor.right.indexOf(currentPosition)
