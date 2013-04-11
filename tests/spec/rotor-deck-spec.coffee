@@ -60,7 +60,7 @@ describe "rotor deck. setup - reflector A, rotor right - III, rotor middle - II,
 		result = rotorDeck.encrypt "B"
 		expect(result).toBe "T"
 
-describe "rotor deck. moving rotors forward", ->
+describe "RotorDeck::advanceRotors()", ->
 	reflector = null
 	rotorRight = null
 	rotorMiddle = null
@@ -70,35 +70,35 @@ describe "rotor deck. moving rotors forward", ->
 	beforeEach ->
 		reflector = new Reflector KnownReflectors.A
 		
-		rotorRight = new Rotor KnownRotors.III
+		rotorRight = new Rotor KnownRotors.III, true
 		rotorRight.setPosition "A"
 		
-		rotorMiddle = new Rotor KnownRotors.II
+		rotorMiddle = new Rotor KnownRotors.II, true
 		rotorMiddle.setPosition "A"
 		
-		rotorLeft = new Rotor KnownRotors.I
+		rotorLeft = new Rotor KnownRotors.I, true
 		rotorLeft.setPosition "A"
 
 		rotorDeck = new RotorDeck reflector, rotorLeft, rotorMiddle, rotorRight
 
-	it 'should return AAB, if AAA is passed', ->
-		rotorDeck.advanceRotors
+	it 'should turn from AAA to AAB', ->
+		rotorDeck.advanceRotors()
 		result = rotorDeck.rotorLeft.getPosition() + rotorDeck.rotorMiddle.getPosition() + rotorDeck.rotorRight.getPosition()
 		expect(result).toBe "AAB"
 
-	it 'should return AAC, if AAB is passed', ->
+	it 'should turn from AAB to  AAC', ->
 		rotorDeck.rotorRight.setPosition "B"
-		rotorDeck.advanceRotors
+		rotorDeck.advanceRotors()
 		result = rotorDeck.rotorLeft.getPosition() + rotorDeck.rotorMiddle.getPosition() + rotorDeck.rotorRight.getPosition()
 		expect(result).toBe "AAC"
 
-	it 'should return AFR, if AEQ is passed', ->
+	it 'should turn from AAV to ABW', ->
 		rotorDeck.rotorLeft.setPosition "A"
-		rotorDeck.rotorMiddle.setPosition "E"
-		rotorDeck.rotorRight.setPosition "Q"
-		rotorDeck.advanceRotors
+		rotorDeck.rotorMiddle.setPosition "A"
+		rotorDeck.rotorRight.setPosition "V"
+		rotorDeck.advanceRotors()
 		result = rotorDeck.rotorLeft.getPosition() + rotorDeck.rotorMiddle.getPosition() + rotorDeck.rotorRight.getPosition()
-		expect(result).toBe "AFR"
+		expect(result).toBe "ABW"
 	
 describe "rotor deck. encrypting: achtung", ->
 	reflector = null
@@ -109,26 +109,45 @@ describe "rotor deck. encrypting: achtung", ->
 
 	beforeEach ->
 		reflector = new Reflector KnownReflectors.A
-		
 		rotorRight = new Rotor KnownRotors.III
-		rotorRight.setPosition "A"
-		
 		rotorMiddle = new Rotor KnownRotors.II
-		rotorMiddle.setPosition "A"
-		
 		rotorLeft = new Rotor KnownRotors.I
-		rotorLeft.setPosition "A"
-
 		rotorDeck = new RotorDeck reflector, rotorLeft, rotorMiddle, rotorRight
 
 	it 'should encrypt and decrypt: ACHTUNG', ->
-
+		word = "AC"
 		encrypt = (char) -> 
 			result = rotorDeck.encrypt char
-			rotorDeck.advanceRotors
 			return result
 
-		word = "ACHTUNG"
+		rotorRight.setPosition "A"
+		rotorMiddle.setPosition "A"
+		rotorLeft.setPosition "A"
+
+		encryptedText = ''
+		encryptedText += encrypt char for char in word.split ''
+		alert encryptedText
+		
+		rotorRight.setPosition "A"
+		rotorMiddle.setPosition "A"
+		rotorLeft.setPosition "A"
+
+		decryptedText = ''
+		decryptedText += encrypt char for char in encryptedText.split ''
+
+		expect(decryptedText).toBe word
+
+	it 'should encrypt and decrypt with Right rotor turnover: ACHTUNG', ->
+		word = "AC"
+		encrypt = (char) -> 
+			result = rotorDeck.encrypt char
+			rotorDeck.advanceRotors()
+			return result
+
+		rotorRight.setPosition "A"
+		rotorMiddle.setPosition "A"
+		rotorLeft.setPosition "A"
+		
 		encryptedText = ''
 		encryptedText += encrypt char for char in word.split ''
 		
@@ -139,4 +158,4 @@ describe "rotor deck. encrypting: achtung", ->
 		decryptedText = ''
 		decryptedText += encrypt char for char in encryptedText.split ''
 		
-		expect(word).toBe decryptedText
+		expect(decryptedText).toBe word

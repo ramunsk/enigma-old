@@ -1,5 +1,5 @@
 class Rotor
-	constructor: (knownRotor) ->
+	constructor: (knownRotor, debug) ->
 		currentPosition = knownRotor.rightSide.charAt(0)
 		events = {}
 
@@ -8,9 +8,18 @@ class Rotor
 
 		raiseEvent = (event) ->
 			if events.hasOwnProperty(event)
-				events[event].foreach (fn) ->
+				log "Raising event '#{event}'"
+				events[event].forEach (fn) ->
 					fn.call(undefined)
 					return
+			return
+
+		log = (text) ->
+			console.log text if debug and console.log
+			return
+
+		warn = (text) ->
+			console.warn text if debug and console.warn
 			return
 
 		@getForwardChar = (char) ->
@@ -35,11 +44,12 @@ class Rotor
 				currentPosition = char
 
 		@advanceForward = () ->
-			index = knownRotor.right.indexOf(currentPosition)
+			index = knownRotor.rightSide.indexOf(currentPosition)
 			index++
-			index = 0 if index >= knownRotor.right.length
+			index = 0 if index >= knownRotor.rightSide.length
 			prevPosition = currentPosition
 			currentPosition = knownRotor.rightSide.charAt index
+			log "Rotor #{knownRotor.type} advanced to #{currentPosition}"
 			raiseEvent "advancedForward"
 			raiseEvent "turnover" if prevPosition == knownRotor.turnover
 
