@@ -6,8 +6,11 @@ rotorDeck = new RotorDeck(new Reflector(KnownReflectors.A), new Rotor(KnownRotor
 
 lampboard = new Lampboard()
 
+screen = new Screen $(".screen")
+
 machine = new Machine(
 	keyboard 
 	rotorDeck 
 	lampboard
+	screen
 )
