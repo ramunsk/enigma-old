@@ -204,7 +204,7 @@
       }
       return expect(decryptedText).toBe(word);
     });
-    return it('encrypt/decrypt with right rotor turnover: ACHTUNG', function() {
+    return it('encrypt/decrypt with right rotor + middle turnover: ACHTUNG', function() {
       var char, decryptedText, encrypt, encryptedText, word, _i, _j, _len, _len1, _ref, _ref1;
 
       word = "ACHTUNG";
