@@ -53,9 +53,9 @@ describe "reflector deck. setup - reflector A, rotor right - III, rotor middle -
 
 		rotorDeck = new RotorDeck reflector, rotorRight, rotorMiddle, rotorLeft
 
-	it 'should return E, if A is passed', ->
+	it 'should return G, if A is passed', ->
 		result = rotorDeck.encrypt("A")
-		expect(result).toBe "E"
-	it 'should return R, if B is passed', ->
+		expect(result).toBe "G"
+	it 'should return T, if B is passed', ->
 		result = rotorDeck.encrypt("B")
-		expect(result).toBe "R"
+		expect(result).toBe "T"

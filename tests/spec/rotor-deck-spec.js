@@ -62,17 +62,17 @@
       rotorLeft.setPosition("A");
       return rotorDeck = new RotorDeck(reflector, rotorRight, rotorMiddle, rotorLeft);
     });
-    it('should return E, if A is passed', function() {
+    it('should return G, if A is passed', function() {
       var result;
 
       result = rotorDeck.encrypt("A");
-      return expect(result).toBe("E");
+      return expect(result).toBe("G");
     });
-    return it('should return R, if B is passed', function() {
+    return it('should return T, if B is passed', function() {
       var result;
 
       result = rotorDeck.encrypt("B");
-      return expect(result).toBe("R");
+      return expect(result).toBe("T");
     });
   });
 
