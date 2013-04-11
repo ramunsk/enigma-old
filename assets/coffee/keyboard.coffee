@@ -1,53 +1,85 @@
-jQuery ($) ->
-	$('body').keydown (e) ->
-		Keyboard.keyDown(e);
-
-	$('body').keyup (e) ->
-		Keyboard.keyUp(e);
-
-	$('.key').click ->
-		Keyboard.buttonPressed(this);
-	
-	class Keyboard
-
+$ = jQuery
+class Keyboard
+	constructor: (uiElement) ->
 		currentLetter = null;
+		keyElements = {}
+		events = {}
 
-		#input type=button clicked
-		@buttonPressed: (button) ->
-			if (currentLetter == null)
-				letter = $(button).val();
-				currentLetter = letter;
+		$(uiElement).find(".key").each(
+			->
+				el = $(@)
+				keyElements[el.data("key")] = el
+				return
+		)
 
-				#TODO: Send to rotor 
-				#console.log(letter);
+		$(document).on(
+			'keydown'
+			(e) ->
+				if e.keyCode >= 65 and e.keyCode <= 90
+					onKeyDown  String.fromCharCode e.keyCode
+					return
+		)
 
-				currentLetter = null;
+		$(document).on(
+			'keyup'
+			(e) ->
+				if e.keyCode >= 65 and e.keyCode <= 90
+					onKeyUp  String.fromCharCode e.keyCode
+					return
+		)
 
-		#keyDown was called
-		@keyDown: (e) ->
-			if (currentLetter is null and e.keyCode >= 65 and e.keyCode <= 90)
-				console.log('down');
+		$(uiElement).on(
+			'mousedown'
+			'.key'
+			->
+				onKeyDown $(@).data("key")
+				return
+		)
+		
+		$(uiElement).on(
+			'mouseup'
+			'.key'
+			->
+				onKeyUp($(@).data("key"))
+				return
+		)
 
-				currentLetter = String.fromCharCode(e.keyCode);;
-				button = $('.key[value='+currentLetter+']');
+		raiseEvent = (event, eventData) ->
+			if events.hasOwnProperty(event)
+				#log "Raising event '#{event}'"
+				events[event].forEach (fn) ->
+					if eventData
+						fn.call(undefined, eventData)
+					else
+						fn.call(undefined)
+					return
+			return
 
-				#TODO: #light on letter
-				$(button).css('background-color', '#d7df01');
+		@on = (event, callback) ->
+			if typeof callback isnt 'function'
+				return
+			if !events.hasOwnProperty(event)
+				events[event] = []
+			events[event].push(callback)
+			return
 
-		#keyUp was called
-		@keyUp: (e) ->
-			if (e.keyCode >= 65 and e.keyCode <= 90)
-				letter = String.fromCharCode(e.keyCode);
-				if (letter is currentLetter)
-					button = $('.key[value='+letter+']');
-					
-					currentLetter = null;
-					$(button).trigger('click');
+		onKeyDown = (char) ->
+			if currentLetter
+				return
+			currentLetter = char
+			keyElements[char].addClass "pressed"
+			raiseEvent 'keydown', {key: char}
+			return
 
-					#TODO: #light off letter
-					$(button).css('background-color', '#424242');
+		onKeyUp = (char) ->
+			if not currentLetter or currentLetter != char
+				return
+			currentLetter = null
+			keyElements[char].removeClass "pressed"
+			raiseEvent 'keyup', {key: char}
+			return
 
-					
 
-	
 
+@.Keyboard = Keyboard
+		

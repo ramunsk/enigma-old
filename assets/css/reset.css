@@ -15,7 +15,7 @@
 }
 
 
-.keyboard .row .key:active	{
+.keyboard .row .key.pressed	{
 	background-color: #d7df01;
 }
 
