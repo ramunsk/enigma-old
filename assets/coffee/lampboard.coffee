@@ -4,6 +4,10 @@ class Lampboard
 
 		@turnOff = ->
 			if currentChar?
+				lamp = $('.lampboard').find('input.lamp[value='+currentChar+']');
+				if lamp?
+					$(lamp).removeClass('active');
+
 				warn "Lampboard UI not implemented"
 				log "Turned off #{ currentChar }"
 				currentChar = null
@@ -11,6 +15,10 @@ class Lampboard
 
 		@turnOn = (char) ->
 			@turnOff()
+			lamp = $('.lampboard').find('input.lamp[value='+char+']');
+			if lamp?
+				$(lamp).addClass('active');
+
 			warn "Lampboard UI not implemented"
 			log "Turned on #{ currentChar }"
 			currentChar = char

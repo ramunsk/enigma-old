@@ -17,7 +17,7 @@ jQuery ($) ->
 			if (currentLetter == null)
 				letter = $(button).val();
 				currentLetter = letter;
-				
+
 				#TODO: Send to rotor 
 				#console.log(letter);
 
@@ -45,7 +45,7 @@ jQuery ($) ->
 					$(button).trigger('click');
 
 					#TODO: #light off letter
-					$(button).css('background-color', '#848484');
+					$(button).css('background-color', '#424242');
 
 					
 
