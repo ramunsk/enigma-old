@@ -12,3 +12,8 @@
 	height: 45px;
 	width: 45px;
 }
+
+
+.keyboard .row .key:active	{
+	background-color: #d7df01;
+}
