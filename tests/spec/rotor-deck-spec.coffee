@@ -17,7 +17,7 @@ describe "reflector deck. setup - reflector A, rotor right - III, rotor middle -
 		rotorLeft = new Rotor KnownRotors.I
 		rotorLeft.setPosition "A"
 
-		rotorDeck = new RotorDeck reflector, rotorRight, rotorMiddle, rotorLeft
+		rotorDeck = new RotorDeck reflector, rotorLeft, rotorMiddle, rotorRight
 
 	it 'should return I, if A is passed', ->
 		result = rotorDeck.encrypt("A")
@@ -51,11 +51,50 @@ describe "reflector deck. setup - reflector A, rotor right - III, rotor middle -
 		rotorLeft = new Rotor KnownRotors.I
 		rotorLeft.setPosition "A"
 
-		rotorDeck = new RotorDeck reflector, rotorRight, rotorMiddle, rotorLeft
+		rotorDeck = new RotorDeck reflector, rotorLeft, rotorMiddle, rotorRight
 
 	it 'should return G, if A is passed', ->
-		result = rotorDeck.encrypt("A")
+		result = rotorDeck.encrypt "A"
 		expect(result).toBe "G"
 	it 'should return T, if B is passed', ->
-		result = rotorDeck.encrypt("B")
+		result = rotorDeck.encrypt "B"
 		expect(result).toBe "T"
+
+describe "reflector deck. moving rotors forward", ->
+	reflector = null
+	rotorRight = null
+	rotorMiddle = null
+	rotorLeft = null
+	rotorDeck = null
+
+	beforeEach ->
+		reflector = new Reflector KnownReflectors.A
+		
+		rotorRight = new Rotor KnownRotors.III
+		rotorRight.setPosition "A"
+		
+		rotorMiddle = new Rotor KnownRotors.II
+		rotorMiddle.setPosition "A"
+		
+		rotorLeft = new Rotor KnownRotors.I
+		rotorLeft.setPosition "A"
+
+		rotorDeck = new RotorDeck reflector, rotorLeft, rotorMiddle, rotorRight
+
+	it 'should return AAB, if AAA is passed', ->
+		rotorDeck.advanceRotors
+		result = rotorDeck.rotorLeft.getPosition() + rotorDeck.rotorMiddle.getPosition() + rotorDeck.rotorRight.getPosition()
+		expect(result).toBe "AAB"
+	it 'should return AAC, if AAB is passed', ->
+		rotorDeck.rotorRight.setPosition "B"
+		rotorDeck.advanceRotors
+		result = rotorDeck.rotorLeft.getPosition() + rotorDeck.rotorMiddle.getPosition() + rotorDeck.rotorRight.getPosition()
+		expect(result).toBe "AAC"
+	it 'should return AFR, if AEQ is passed', ->
+		rotorDeck.rotorLeft.setPosition "A"
+		rotorDeck.rotorMiddle.setPosition "E"
+		rotorDeck.rotorRight.setPosition "Q"
+		rotorDeck.advanceRotors
+		result = rotorDeck.rotorLeft.getPosition() + rotorDeck.rotorMiddle.getPosition() + rotorDeck.rotorRight.getPosition()
+		expect(result).toBe "AFR"
+	
