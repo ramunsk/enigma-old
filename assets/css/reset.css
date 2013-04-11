@@ -42,3 +42,33 @@
   	background-color: #b2ac07; 
 	color: #dad423;
 } 
+
+/*.rotors_container .rotor,
+.rotors_container .rotor .rottor_letters {
+	display: inline;
+}*/
+
+
+.rotors_container .rotor {
+	display: inline;
+	float: left;
+	width: 50px;
+}
+
+.rotors_container .rotor input {
+	display: inline;
+}
+
+.rotors_container .rotor ul.rottor_letters {
+	max-height: 50px;
+	overflow: hidden;
+	padding-left: 13px;
+	list-style: none;
+}
+
+.rotors_container .rotor ul.rottor_letters li.letter {
+	font-size: 20pt;
+	height: 50px;
+	border: 1px solid #000;
+	vertical-align: middle;
+}
