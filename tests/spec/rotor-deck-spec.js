@@ -16,7 +16,7 @@
       rotorMiddle.setPosition("A");
       rotorLeft = new Rotor(KnownRotors.I);
       rotorLeft.setPosition("A");
-      return rotorDeck = new RotorDeck(reflector, rotorRight, rotorMiddle, rotorLeft);
+      return rotorDeck = new RotorDeck(reflector, rotorLeft, rotorMiddle, rotorRight);
     });
     it('should return I, if A is passed', function() {
       var result;
@@ -60,7 +60,7 @@
       rotorMiddle.setPosition("A");
       rotorLeft = new Rotor(KnownRotors.I);
       rotorLeft.setPosition("A");
-      return rotorDeck = new RotorDeck(reflector, rotorRight, rotorMiddle, rotorLeft);
+      return rotorDeck = new RotorDeck(reflector, rotorLeft, rotorMiddle, rotorRight);
     });
     it('should return G, if A is passed', function() {
       var result;
@@ -73,6 +73,51 @@
 
       result = rotorDeck.encrypt("B");
       return expect(result).toBe("T");
+    });
+  });
+
+  describe("RotorDeck::advanceRotors()", function() {
+    var reflector, rotorDeck, rotorLeft, rotorMiddle, rotorRight;
+
+    reflector = null;
+    rotorRight = null;
+    rotorMiddle = null;
+    rotorLeft = null;
+    rotorDeck = null;
+    beforeEach(function() {
+      reflector = new Reflector(KnownReflectors.A);
+      rotorRight = new Rotor(KnownRotors.III, true);
+      rotorRight.setPosition("A");
+      rotorMiddle = new Rotor(KnownRotors.II, true);
+      rotorMiddle.setPosition("A");
+      rotorLeft = new Rotor(KnownRotors.I, true);
+      rotorLeft.setPosition("A");
+      return rotorDeck = new RotorDeck(reflector, rotorLeft, rotorMiddle, rotorRight);
+    });
+    it('should turn from AAA to AAB', function() {
+      var result;
+
+      rotorDeck.advanceRotors();
+      result = rotorDeck.rotorLeft.getPosition() + rotorDeck.rotorMiddle.getPosition() + rotorDeck.rotorRight.getPosition();
+      return expect(result).toBe("AAB");
+    });
+    it('should turn from AAB to  AAC', function() {
+      var result;
+
+      rotorDeck.rotorRight.setPosition("B");
+      rotorDeck.advanceRotors();
+      result = rotorDeck.rotorLeft.getPosition() + rotorDeck.rotorMiddle.getPosition() + rotorDeck.rotorRight.getPosition();
+      return expect(result).toBe("AAC");
+    });
+    return it('should turn from AAV to ABW', function() {
+      var result;
+
+      rotorDeck.rotorLeft.setPosition("A");
+      rotorDeck.rotorMiddle.setPosition("A");
+      rotorDeck.rotorRight.setPosition("V");
+      rotorDeck.advanceRotors();
+      result = rotorDeck.rotorLeft.getPosition() + rotorDeck.rotorMiddle.getPosition() + rotorDeck.rotorRight.getPosition();
+      return expect(result).toBe("ABW");
     });
   });
 
