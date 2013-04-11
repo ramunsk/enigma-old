@@ -1,4 +1,4 @@
-describe "reflector deck. setup - reflector A, rotor right - III, rotor middle - II, rotor left - I, initial position: AAA", ->
+describe "rotor deck. setup - reflector A, rotor right - III, rotor middle - II, rotor left - I, initial position: AAA", ->
 	reflector = null
 	rotorRight = null
 	rotorMiddle = null
@@ -32,7 +32,7 @@ describe "reflector deck. setup - reflector A, rotor right - III, rotor middle -
 		result = rotorDeck.encrypt("B")
 		expect(result).toBe "F"
 
-describe "reflector deck. setup - reflector A, rotor right - III, rotor middle - II, rotor left - I, initial position: AAB", ->
+describe "rotor deck. setup - reflector A, rotor right - III, rotor middle - II, rotor left - I, initial position: AAB", ->
 	reflector = null
 	rotorRight = null
 	rotorMiddle = null
@@ -60,7 +60,7 @@ describe "reflector deck. setup - reflector A, rotor right - III, rotor middle -
 		result = rotorDeck.encrypt "B"
 		expect(result).toBe "T"
 
-describe "reflector deck. moving rotors forward", ->
+describe "rotor deck. moving rotors forward", ->
 	reflector = null
 	rotorRight = null
 	rotorMiddle = null
@@ -91,7 +91,7 @@ describe "reflector deck. moving rotors forward", ->
 		rotorDeck.advanceRotors
 		result = rotorDeck.rotorLeft.getPosition() + rotorDeck.rotorMiddle.getPosition() + rotorDeck.rotorRight.getPosition()
 		expect(result).toBe "AAC"
-		
+
 	it 'should return AFR, if AEQ is passed', ->
 		rotorDeck.rotorLeft.setPosition "A"
 		rotorDeck.rotorMiddle.setPosition "E"
@@ -100,3 +100,43 @@ describe "reflector deck. moving rotors forward", ->
 		result = rotorDeck.rotorLeft.getPosition() + rotorDeck.rotorMiddle.getPosition() + rotorDeck.rotorRight.getPosition()
 		expect(result).toBe "AFR"
 	
+describe "rotor deck. encrypting: achtung", ->
+	reflector = null
+	rotorRight = null
+	rotorMiddle = null
+	rotorLeft = null
+	rotorDeck = null
+
+	beforeEach ->
+		reflector = new Reflector KnownReflectors.A
+		
+		rotorRight = new Rotor KnownRotors.III
+		rotorRight.setPosition "A"
+		
+		rotorMiddle = new Rotor KnownRotors.II
+		rotorMiddle.setPosition "A"
+		
+		rotorLeft = new Rotor KnownRotors.I
+		rotorLeft.setPosition "A"
+
+		rotorDeck = new RotorDeck reflector, rotorLeft, rotorMiddle, rotorRight
+
+	it 'should encrypt and decrypt: ACHTUNG', ->
+
+		encrypt = (char) -> 
+			result = rotorDeck.encrypt char
+			rotorDeck.advanceRotors
+			return result
+
+		word = "ACHTUNG"
+		encryptedText = ''
+		encryptedText += encrypt char for char in word.split ''
+		
+		rotorRight.setPosition "A"
+		rotorMiddle.setPosition "A"
+		rotorLeft.setPosition "A"
+
+		decryptedText = ''
+		decryptedText += encrypt char for char in encryptedText.split ''
+		
+		expect(word).toBe decryptedText
