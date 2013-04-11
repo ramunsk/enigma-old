@@ -2,18 +2,18 @@ $ = jQuery
 KnownRotors =
 	I:
 		type : "I",
-		leftSide:	'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
-		rightSide:	'JGDQOXUSCAMIFRVTPNEWKBLZYH'
+		rightSide:	'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
+		leftSide:	'DMTWSILRUYQNKFEJCAZBPGXOHV'
 		turnover:	'Q'
 	II:
 		type : "II",
-		leftSide:	'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
-		rightSide:	'NTZPSFBOKMWRCJDIVLAEYUXHGQ'
+		rightSide:	'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
+		leftSide:	'HQZGPJTMOBLNCIFDYAWVEUSRKX'
 		turnover:	'E'
 	III:
 		type : "III",
-		leftSide:	'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
-		rightSide:	'JVIUBHTCDYAKEQZPOSGXNRMWFL'
+		rightSide:	'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
+		leftSide:	'UQNTLSZFMREHDPXKIBVYGJCWOA'
 		turnover:	'V'
 
 window.KnownRotors = KnownRotors
