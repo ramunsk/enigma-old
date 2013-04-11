@@ -110,3 +110,4 @@ UpgradeLog*.XML
 
 # Generated coffeescript files
 assets/coffee/*.js
+tests/spec/*.js
