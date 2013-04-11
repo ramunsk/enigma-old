@@ -3,11 +3,13 @@
 	<title></title>
 	<script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
 	<script>window.jQuery || document.write('<script src="assets/js/jquery-1.9.1.min.js")><\/script>')</script>
+	<script src="assets/coffee/sounds.js"></script>
 	<script src="assets/coffee/keyboard.js" type="text/javascript"></script>
 	<script src="assets/coffee/known-rotors.js" type="text/javascript"></script>
 	<script src="assets/coffee/known-reflectors.js"></script>
 	<script src="assets/coffee/reflector.js"></script>
 	<script src="assets/coffee/rotor.js"></script>
+	
 
 	<link rel="stylesheet" type="text/css" href="assets/css/reset.css">
 </head>
@@ -49,5 +51,10 @@
 			<input class="key" type="button" value="L">
 		</div>
 	</div>
+
+	<div>
+		<audio id="keystroke_sound" src="sounds/keystroke.wav" type="audio/wav" preload="auto"></audio>
+	</div> 
+
 </body>
 </html>
