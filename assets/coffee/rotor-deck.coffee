@@ -10,6 +10,7 @@ class RotorDeck
 			result = rotor3.getBackwardChar result
 			return result
 		@advanceRotors = () ->
+			#
 			return this
 
 @RotorDeck = RotorDeck
