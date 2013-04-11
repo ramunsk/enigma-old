@@ -1,0 +1,17 @@
+.keyboard .row:nth-child(2)	{
+	margin-left: 25px;
+}
+
+.keyboard .row .key	{
+	display: inline;
+}
+
+.keyboard .row .key input {
+	background-color: #848484;
+	color: #e6e6e6;
+	border-radius: 50px;
+	margin: 5px;
+	font-size: 20pt;
+	height: 45px;
+	width: 45px;
+}
