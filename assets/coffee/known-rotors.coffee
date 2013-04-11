@@ -1,4 +1,3 @@
-$ = jQuery
 KnownRotors =
 	I:
 		type : "I",
