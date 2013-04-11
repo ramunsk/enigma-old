@@ -136,7 +136,7 @@
       rotorLeft = new Rotor(KnownRotors.I, true);
       return rotorDeck = new RotorDeck(reflector, rotorLeft, rotorMiddle, rotorRight);
     });
-    return it('should encrypt and decrypt: ACHTUNG', function() {
+    it('encrypt/decrypt: ACHTUNG', function() {
       var char, decryptedText, encrypt, encryptedText, word, _i, _j, _len, _len1, _ref, _ref1;
 
       word = "ACHTUNG";
@@ -144,8 +144,8 @@
         var result;
 
         result = rotorDeck.encrypt(char);
+        console.log(("" + char + " -> " + result + " | ") + rotorDeck.rotorLeft.getPosition() + rotorDeck.rotorMiddle.getPosition() + rotorDeck.rotorRight.getPosition());
         rotorDeck.advanceRotors();
-        console.log("" + char + " -> " + result);
         return result;
       };
       console.log("============= Encrypt " + word + " ===============");
@@ -161,6 +161,74 @@
       console.log("============= Decrypt " + word + " (scrambled) ===============");
       rotorRight.setPosition("A");
       rotorMiddle.setPosition("A");
+      rotorLeft.setPosition("A");
+      decryptedText = '';
+      _ref1 = encryptedText.split('');
+      for (_j = 0, _len1 = _ref1.length; _j < _len1; _j++) {
+        char = _ref1[_j];
+        decryptedText += encrypt(char);
+      }
+      return expect(decryptedText).toBe(word);
+    });
+    it('encrypt/decrypt with right rotor turnover: ACHTUNG', function() {
+      var char, decryptedText, encrypt, encryptedText, word, _i, _j, _len, _len1, _ref, _ref1;
+
+      word = "ACHTUNG";
+      encrypt = function(char) {
+        var result;
+
+        result = rotorDeck.encrypt(char);
+        console.log(("" + char + " -> " + result + " | ") + rotorDeck.rotorLeft.getPosition() + rotorDeck.rotorMiddle.getPosition() + rotorDeck.rotorRight.getPosition());
+        rotorDeck.advanceRotors();
+        return result;
+      };
+      console.log("============= Encrypt " + word + " ===============");
+      rotorRight.setPosition("T");
+      rotorMiddle.setPosition("A");
+      rotorLeft.setPosition("A");
+      encryptedText = '';
+      _ref = word.split('');
+      for (_i = 0, _len = _ref.length; _i < _len; _i++) {
+        char = _ref[_i];
+        encryptedText += encrypt(char);
+      }
+      console.log("============= Decrypt " + word + " (scrambled) ===============");
+      rotorRight.setPosition("T");
+      rotorMiddle.setPosition("A");
+      rotorLeft.setPosition("A");
+      decryptedText = '';
+      _ref1 = encryptedText.split('');
+      for (_j = 0, _len1 = _ref1.length; _j < _len1; _j++) {
+        char = _ref1[_j];
+        decryptedText += encrypt(char);
+      }
+      return expect(decryptedText).toBe(word);
+    });
+    return it('encrypt/decrypt with right rotor turnover: ACHTUNG', function() {
+      var char, decryptedText, encrypt, encryptedText, word, _i, _j, _len, _len1, _ref, _ref1;
+
+      word = "ACHTUNG";
+      encrypt = function(char) {
+        var result;
+
+        result = rotorDeck.encrypt(char);
+        console.log(("" + char + " -> " + result + " | ") + rotorDeck.rotorLeft.getPosition() + rotorDeck.rotorMiddle.getPosition() + rotorDeck.rotorRight.getPosition());
+        rotorDeck.advanceRotors();
+        return result;
+      };
+      console.log("============= Encrypt " + word + " ===============");
+      rotorRight.setPosition("T");
+      rotorMiddle.setPosition("D");
+      rotorLeft.setPosition("A");
+      encryptedText = '';
+      _ref = word.split('');
+      for (_i = 0, _len = _ref.length; _i < _len; _i++) {
+        char = _ref[_i];
+        encryptedText += encrypt(char);
+      }
+      console.log("============= Decrypt " + word + " (scrambled) ===============");
+      rotorRight.setPosition("T");
+      rotorMiddle.setPosition("D");
       rotorLeft.setPosition("A");
       decryptedText = '';
       _ref1 = encryptedText.split('');

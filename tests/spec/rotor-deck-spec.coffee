@@ -114,13 +114,12 @@ describe "rotor deck. encrypting: achtung", ->
 		rotorLeft = new Rotor KnownRotors.I, true
 		rotorDeck = new RotorDeck reflector, rotorLeft, rotorMiddle, rotorRight
 
-	it 'should encrypt and decrypt: ACHTUNG', ->
+	it 'encrypt/decrypt: ACHTUNG', ->
 		word = "ACHTUNG"
 		encrypt = (char) -> 
 			result = rotorDeck.encrypt char
+			console.log "#{char} -> #{result} | " + rotorDeck.rotorLeft.getPosition() + rotorDeck.rotorMiddle.getPosition() + rotorDeck.rotorRight.getPosition()
 			rotorDeck.advanceRotors()
-			console.log "#{char} -> #{result}"
-
 			return result
 
 		console.log "============= Encrypt #{word} ==============="
@@ -142,25 +141,54 @@ describe "rotor deck. encrypting: achtung", ->
 
 		expect(decryptedText).toBe word
 
-	# it 'should encrypt and decrypt with Right rotor turnover: ACHTUNG', ->
-	# 	word = "AC"
-	# 	encrypt = (char) -> 
-	# 		result = rotorDeck.encrypt char
-	# 		rotorDeck.advanceRotors()
-	# 		return result
+	it 'encrypt/decrypt with right rotor turnover: ACHTUNG', ->
+		word = "ACHTUNG"
+		encrypt = (char) -> 
+			result = rotorDeck.encrypt char
+			console.log "#{char} -> #{result} | " + rotorDeck.rotorLeft.getPosition() + rotorDeck.rotorMiddle.getPosition() + rotorDeck.rotorRight.getPosition()
+			rotorDeck.advanceRotors()
+			return result
 
-	# 	rotorRight.setPosition "A"
-	# 	rotorMiddle.setPosition "A"
-	# 	rotorLeft.setPosition "A"
+		console.log "============= Encrypt #{word} ==============="
+		rotorRight.setPosition "T"
+		rotorMiddle.setPosition "A"
+		rotorLeft.setPosition "A"
 		
-	# 	encryptedText = ''
-	# 	encryptedText += encrypt char for char in word.split ''
+		encryptedText = ''
+		encryptedText += encrypt char for char in word.split ''
 		
-	# 	rotorRight.setPosition "A"
-	# 	rotorMiddle.setPosition "A"
-	# 	rotorLeft.setPosition "A"
+		console.log "============= Decrypt #{word} (scrambled) ==============="
+		rotorRight.setPosition "T"
+		rotorMiddle.setPosition "A"
+		rotorLeft.setPosition "A"
 
-	# 	decryptedText = ''
-	# 	decryptedText += encrypt char for char in encryptedText.split ''
+		decryptedText = ''
+		decryptedText += encrypt char for char in encryptedText.split ''
 		
-	# 	expect(decryptedText).toBe word
+		expect(decryptedText).toBe word
+
+	it 'encrypt/decrypt with right rotor turnover: ACHTUNG', ->
+		word = "ACHTUNG"
+		encrypt = (char) -> 
+			result = rotorDeck.encrypt char
+			console.log "#{char} -> #{result} | " + rotorDeck.rotorLeft.getPosition() + rotorDeck.rotorMiddle.getPosition() + rotorDeck.rotorRight.getPosition()
+			rotorDeck.advanceRotors()
+			return result
+
+		console.log "============= Encrypt #{word} ==============="
+		rotorRight.setPosition "T"
+		rotorMiddle.setPosition "D"
+		rotorLeft.setPosition "A"
+		
+		encryptedText = ''
+		encryptedText += encrypt char for char in word.split ''
+		
+		console.log "============= Decrypt #{word} (scrambled) ==============="
+		rotorRight.setPosition "T"
+		rotorMiddle.setPosition "D"
+		rotorLeft.setPosition "A"
+
+		decryptedText = ''
+		decryptedText += encrypt char for char in encryptedText.split ''
+		
+		expect(decryptedText).toBe word
