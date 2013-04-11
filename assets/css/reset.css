@@ -4,9 +4,6 @@
 
 .keyboard .row .key	{
 	display: inline;
-}
-
-.keyboard .row .key input {
 	background-color: #848484;
 	color: #e6e6e6;
 	border-radius: 50px;
@@ -14,4 +11,9 @@
 	font-size: 20pt;
 	height: 45px;
 	width: 45px;
+}
+
+
+.keyboard .row .key:active	{
+	background-color: #d7df01;
 }
