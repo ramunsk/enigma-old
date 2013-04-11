@@ -167,7 +167,7 @@ describe "rotor deck. encrypting: achtung", ->
 		
 		expect(decryptedText).toBe word
 
-	it 'encrypt/decrypt with right rotor turnover: ACHTUNG', ->
+	it 'encrypt/decrypt with right rotor + middle turnover: ACHTUNG', ->
 		word = "ACHTUNG"
 		encrypt = (char) -> 
 			result = rotorDeck.encrypt char
