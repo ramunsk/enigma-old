@@ -6,6 +6,13 @@ class Rotor
 		getOffset = () ->
 			knownRotor.rightSide.indexOf currentPosition
 
+		raiseEvent = (event) ->
+			if events.hasOwnProperty(event)
+				events[event].foreach (fn) ->
+					fn.call(undefined)
+					return
+			return
+
 		@getForwardChar = (char) ->
 			index = knownRotor.rightSide.indexOf(char.toUpperCase())
 			offset = getOffset()
@@ -29,24 +36,20 @@ class Rotor
 
 		@advanceForward = () ->
 			index = knownRotor.right.indexOf(currentPosition)
-			if index == knownRotor.right.length - 1
-				index = 0
-			else
-				index++
+			index++
+			index = 0 if index >= knownRotor.right.length
+			prevPosition = currentPosition
 			currentPosition = knownRotor.rightSide.charAt index
-			if events.hasOwnProperty('positionChanged')
-				events.positionChanged.foreach (fn) ->
-					fn.call(undefined)
-					return
+			raiseEvent "advancedForward"
+			raiseEvent "turnover" if prevPosition == knownRotor.turnover
+
 			return
 			
 		@advanceBackward = () ->
 			index = knownRotor.right.indexOf(currentPosition)
-			if index == 0 
-				index = knownRotor.right.length - 1
-			else
-				index--
-			currentPosition = knownRotor.rightSide.charAt(index)
+			index--
+			index = knownRotor.right.length - 1 if index < 0
+			return
 
 		@on = (event, callback) ->
 			if typeof callback isnt 'function'
