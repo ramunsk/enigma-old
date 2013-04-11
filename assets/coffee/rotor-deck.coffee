@@ -18,7 +18,7 @@ class RotorDeck
 			result = rotorRight.getBackwardChar result
 			return result
 		@advanceRotors = () ->
-			rotorRight.advanceForward
+			rotorRight.advanceForward()
 			return
 
 @RotorDeck = RotorDeck

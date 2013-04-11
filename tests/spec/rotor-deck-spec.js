@@ -76,7 +76,7 @@
     });
   });
 
-  describe("reflector deck. moving rotors forward", function() {
+  describe("RotorDeck::advanceRotors()", function() {
     var reflector, rotorDeck, rotorLeft, rotorMiddle, rotorRight;
 
     reflector = null;
@@ -86,38 +86,38 @@
     rotorDeck = null;
     beforeEach(function() {
       reflector = new Reflector(KnownReflectors.A);
-      rotorRight = new Rotor(KnownRotors.III);
+      rotorRight = new Rotor(KnownRotors.III, true);
       rotorRight.setPosition("A");
-      rotorMiddle = new Rotor(KnownRotors.II);
+      rotorMiddle = new Rotor(KnownRotors.II, true);
       rotorMiddle.setPosition("A");
-      rotorLeft = new Rotor(KnownRotors.I);
+      rotorLeft = new Rotor(KnownRotors.I, true);
       rotorLeft.setPosition("A");
       return rotorDeck = new RotorDeck(reflector, rotorLeft, rotorMiddle, rotorRight);
     });
-    it('should return AAB, if AAA is passed', function() {
+    it('should turn from AAA to AAB', function() {
       var result;
 
-      rotorDeck.advanceRotors;
+      rotorDeck.advanceRotors();
       result = rotorDeck.rotorLeft.getPosition() + rotorDeck.rotorMiddle.getPosition() + rotorDeck.rotorRight.getPosition();
       return expect(result).toBe("AAB");
     });
-    it('should return AAC, if AAB is passed', function() {
+    it('should turn from AAB to  AAC', function() {
       var result;
 
       rotorDeck.rotorRight.setPosition("B");
-      rotorDeck.advanceRotors;
+      rotorDeck.advanceRotors();
       result = rotorDeck.rotorLeft.getPosition() + rotorDeck.rotorMiddle.getPosition() + rotorDeck.rotorRight.getPosition();
       return expect(result).toBe("AAC");
     });
-    return it('should return AFR, if AEQ is passed', function() {
+    return it('should turn from AAV to ABW', function() {
       var result;
 
       rotorDeck.rotorLeft.setPosition("A");
-      rotorDeck.rotorMiddle.setPosition("E");
-      rotorDeck.rotorRight.setPosition("Q");
-      rotorDeck.advanceRotors;
+      rotorDeck.rotorMiddle.setPosition("A");
+      rotorDeck.rotorRight.setPosition("V");
+      rotorDeck.advanceRotors();
       result = rotorDeck.rotorLeft.getPosition() + rotorDeck.rotorMiddle.getPosition() + rotorDeck.rotorRight.getPosition();
-      return expect(result).toBe("AFR");
+      return expect(result).toBe("ABW");
     });
   });
 
