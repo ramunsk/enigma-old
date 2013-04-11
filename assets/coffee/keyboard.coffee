@@ -67,16 +67,14 @@ class Keyboard
 			if currentLetter
 				return
 			currentLetter = char
-			console.log "onKeyDown #{char}"
 			keyElements[char].addClass "pressed"
 			raiseEvent 'keydown', {key: char}
 			return
 
 		onKeyUp = (char) ->
-			if not currentLetter
+			if not currentLetter or currentLetter != char
 				return
 			currentLetter = null
-			console.log "onKeyUp #{char}"
 			keyElements[char].removeClass "pressed"
 			raiseEvent 'keyup', {key: char}
 			return
