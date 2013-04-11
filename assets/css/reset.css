@@ -4,9 +4,6 @@
 
 .keyboard .row .key	{
 	display: inline;
-}
-
-.keyboard .row .key input {
 	background-color: #848484;
 	color: #e6e6e6;
 	border-radius: 50px;
