@@ -8,7 +8,7 @@ class Rotor
 
 		raiseEvent = (event) ->
 			if events.hasOwnProperty(event)
-				log "Raising event '#{event}'"
+				#log "Raising event '#{event}'"
 				events[event].forEach (fn) ->
 					fn.call(undefined)
 					return
@@ -27,14 +27,18 @@ class Rotor
 			offset = getOffset()
 			position = index + offset
 			position = position - knownRotor.rightSide.length if position >= knownRotor.rightSide.length
-			knownRotor.leftSide.charAt(position)
+			result = knownRotor.leftSide.charAt(position)
+			#log "#{knownRotor.type}::getPosition #{currentPosition} "
+			return result
 
 		@getBackwardChar = (char) ->
 			index = knownRotor.leftSide.indexOf(char.toUpperCase())
 			offset = getOffset()
-			position = index + offset
-			position = position - knownRotor.rightSide.length if position >= knownRotor.rightSide.length
-			knownRotor.rightSide.charAt(position)
+			position = index - offset
+			position = knownRotor.rightSide.length + position if position < 0
+			result = knownRotor.rightSide.charAt(position)
+			#log "#{knownRotor.type}::getPosition #{currentPosition} "
+			return result
 		
 		@getPosition = (char) ->
 			currentPosition
@@ -49,7 +53,7 @@ class Rotor
 			index = 0 if index >= knownRotor.rightSide.length
 			prevPosition = currentPosition
 			currentPosition = knownRotor.rightSide.charAt index
-			log "Rotor #{knownRotor.type} advanced to #{currentPosition}"
+			#log "Rotor #{knownRotor.type} advanced to #{currentPosition}"
 			raiseEvent "advancedForward"
 			raiseEvent "turnover" if prevPosition == knownRotor.turnover
 

@@ -62,17 +62,17 @@
       rotorLeft.setPosition("A");
       return rotorDeck = new RotorDeck(reflector, rotorLeft, rotorMiddle, rotorRight);
     });
-    it('should return G, if A is passed', function() {
+    it('should return E, if A is passed', function() {
       var result;
 
       result = rotorDeck.encrypt("A");
-      return expect(result).toBe("G");
+      return expect(result).toBe("E");
     });
-    return it('should return T, if B is passed', function() {
+    return it('should return R, if B is passed', function() {
       var result;
 
       result = rotorDeck.encrypt("B");
-      return expect(result).toBe("T");
+      return expect(result).toBe("R");
     });
   });
 
@@ -130,54 +130,25 @@
     rotorLeft = null;
     rotorDeck = null;
     beforeEach(function() {
-      reflector = new Reflector(KnownReflectors.A);
-      rotorRight = new Rotor(KnownRotors.III);
-      rotorMiddle = new Rotor(KnownRotors.II);
-      rotorLeft = new Rotor(KnownRotors.I);
+      reflector = new Reflector(KnownReflectors.A, true);
+      rotorRight = new Rotor(KnownRotors.III, true);
+      rotorMiddle = new Rotor(KnownRotors.II, true);
+      rotorLeft = new Rotor(KnownRotors.I, true);
       return rotorDeck = new RotorDeck(reflector, rotorLeft, rotorMiddle, rotorRight);
     });
-    it('should encrypt and decrypt: ACHTUNG', function() {
+    return it('should encrypt and decrypt: ACHTUNG', function() {
       var char, decryptedText, encrypt, encryptedText, word, _i, _j, _len, _len1, _ref, _ref1;
 
-      word = "AC";
-      encrypt = function(char) {
-        var result;
-
-        result = rotorDeck.encrypt(char);
-        return result;
-      };
-      rotorRight.setPosition("A");
-      rotorMiddle.setPosition("A");
-      rotorLeft.setPosition("A");
-      encryptedText = '';
-      _ref = word.split('');
-      for (_i = 0, _len = _ref.length; _i < _len; _i++) {
-        char = _ref[_i];
-        encryptedText += encrypt(char);
-      }
-      alert(encryptedText);
-      rotorRight.setPosition("A");
-      rotorMiddle.setPosition("A");
-      rotorLeft.setPosition("A");
-      decryptedText = '';
-      _ref1 = encryptedText.split('');
-      for (_j = 0, _len1 = _ref1.length; _j < _len1; _j++) {
-        char = _ref1[_j];
-        decryptedText += encrypt(char);
-      }
-      return expect(decryptedText).toBe(word);
-    });
-    return it('should encrypt and decrypt with Right rotor turnover: ACHTUNG', function() {
-      var char, decryptedText, encrypt, encryptedText, word, _i, _j, _len, _len1, _ref, _ref1;
-
-      word = "AC";
+      word = "ACHTUNG";
       encrypt = function(char) {
         var result;
 
         result = rotorDeck.encrypt(char);
         rotorDeck.advanceRotors();
+        console.log("" + char + " -> " + result);
         return result;
       };
+      console.log("============= Encrypt " + word + " ===============");
       rotorRight.setPosition("A");
       rotorMiddle.setPosition("A");
       rotorLeft.setPosition("A");
@@ -187,6 +158,7 @@
         char = _ref[_i];
         encryptedText += encrypt(char);
       }
+      console.log("============= Decrypt " + word + " (scrambled) ===============");
       rotorRight.setPosition("A");
       rotorMiddle.setPosition("A");
       rotorLeft.setPosition("A");
