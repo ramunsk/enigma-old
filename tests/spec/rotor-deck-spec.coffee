@@ -85,11 +85,13 @@ describe "reflector deck. moving rotors forward", ->
 		rotorDeck.advanceRotors
 		result = rotorDeck.rotorLeft.getPosition() + rotorDeck.rotorMiddle.getPosition() + rotorDeck.rotorRight.getPosition()
 		expect(result).toBe "AAB"
+
 	it 'should return AAC, if AAB is passed', ->
 		rotorDeck.rotorRight.setPosition "B"
 		rotorDeck.advanceRotors
 		result = rotorDeck.rotorLeft.getPosition() + rotorDeck.rotorMiddle.getPosition() + rotorDeck.rotorRight.getPosition()
 		expect(result).toBe "AAC"
+		
 	it 'should return AFR, if AEQ is passed', ->
 		rotorDeck.rotorLeft.setPosition "A"
 		rotorDeck.rotorMiddle.setPosition "E"
