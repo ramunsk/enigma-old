@@ -22,6 +22,7 @@ class RotorDeck
 						$(currentLetterItem).removeClass('visible_letter')
 
 						if direction is 'F' #going forwards
+							document.getElementById('rotation_sound').play();
 							nextItem = $(currentLetterItem).next('li');
 							if $(nextItem).length > 0
 								$(nextItem).addClass('visible_letter')
@@ -29,8 +30,8 @@ class RotorDeck
 								$(ulElement).find('li:first-child').addClass('visible_letter')
 
 							affectedRotor.advanceForward()
-							console.log('FF')
 						else if direction is 'B' #going backwards
+							document.getElementById('rotation_sound').play();
 							prevItem = $(currentLetterItem).prev('li');
 							if $(prevItem).length > 0
 								$(prevItem).addClass('visible_letter')
@@ -38,7 +39,6 @@ class RotorDeck
 								$(ulElement).find('li:last-child').addClass('visible_letter')
 
 							affectedRotor.advanceBackward()
-							console.log('BB')
 				)
 		)
 

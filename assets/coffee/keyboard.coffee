@@ -16,6 +16,7 @@ class Keyboard
 			'keydown'
 			(e) ->
 				if e.keyCode >= 65 and e.keyCode <= 90
+					document.getElementById('keystroke_sound').play();
 					onKeyDown  String.fromCharCode e.keyCode
 					return
 		)
@@ -24,14 +25,17 @@ class Keyboard
 			'keyup'
 			(e) ->
 				if e.keyCode >= 65 and e.keyCode <= 90
+					document.getElementById('keystroke_sound').pause();			
+					document.getElementById('keystroke_sound').currentTime = 0
 					onKeyUp  String.fromCharCode e.keyCode
 					return
 		)
-
+		
 		$(uiElement).on(
 			'mousedown'
 			'.key'
 			->
+				document.getElementById('keystroke_sound').play();
 				onKeyDown $(@).data("key")
 				return
 		)
@@ -40,6 +44,8 @@ class Keyboard
 			'mouseup'
 			'.key'
 			->
+				document.getElementById('keystroke_sound').pause();			
+				document.getElementById('keystroke_sound').currentTime = 0
 				onKeyUp($(@).data("key"))
 				return
 		)
