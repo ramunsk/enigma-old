@@ -1,0 +1,150 @@
+html, body {
+	margin: 0;
+	padding: 0;
+	height: 100%;
+	font-family:Consolas,Monaco,Lucida Console,Liberation Mono,DejaVu Sans Mono,Bitstream Vera Sans Mono,Courier New, monospace;
+	font-size: 26px;
+}
+
+a {
+	text-decoration: none;
+}
+
+.sizer {
+	height: 100%;
+	max-width: 800px;
+	margin: 0 auto;
+	border: 1px solid #eee;
+	background-color: #484855;
+}
+
+.rotor-deck{
+	height: 30%;
+}
+
+
+.logo_container .logo {
+	float: right;
+	margin-top: 40px;
+	margin-right: 40px;
+	width: 20%;
+}
+
+.lampboard, .keyboard{
+	height: 30%;
+	position: relative;
+	border-bottom: 1px solid #222;
+}
+
+.keyboard, .screen {
+	border-top: 1px solid #666;
+}
+
+.lampboard table, .keyboard table {
+	width: 100%;
+	height: 100%;
+}
+
+.lampboard td, .keyboard td {
+	text-align: center;
+}
+
+.lampboard .lamp {
+	display: inline-block;
+	border: 1px solid #252632;
+	border-radius: 50%;
+	font-weight: bold;
+	padding: 5px 12px;
+	color: #252632;
+	box-shadow:inset 0 0 10px #333;
+}
+
+.lampboard .lamp.active {
+	color: #f0ec84;
+	text-shadow: #f0ec84 0px 0px 12px;
+}
+
+.keyboard .key {
+	display: inline-block;
+	border: 3px solid #ededed;
+	border-radius: 50%;
+	font-weight: bold;
+	padding: 5px 12px;
+	color: #eee;
+	box-shadow: 
+		inset 0 0 3px #eee,
+		inset 0 0 15px #222,
+		5px -5px 10px #222;
+	font-size: 78%;
+}
+
+.keyboard .key.pressed {
+	box-shadow: none;
+	border-color: #aaa;
+}
+
+.screen {
+	height: 10%;
+	position: relative;
+}
+
+.screen .input, .screen .output {
+	font-size: 90%;
+	overflow: hidden;
+	height: 50%;
+	line-height: 100%;
+	color: #222;
+	letter-spacing: 10px;
+	font-weight: bold;
+}
+
+
+.rotors_container {
+	margin-left: 295px;
+}
+
+.rotors_container .rotor {
+	display: inline;
+	float: left;
+	margin-left: 20px;
+	width: 50px;
+}
+
+.rotors_container .rotor .rotor_button {
+	display: inline-block;
+	background-color: #aaa;
+	border: none;
+	padding: 3px;
+	width: 40px;
+	border-radius: 50%;
+	margin-left: 5px;
+}
+
+.rotors_container .rotor ul.rotor_letters {
+	max-height: 50px;
+	overflow: hidden;
+	padding-left: 13px;
+	list-style: none;
+	border: 1px solid #222;
+	border-radius: 5px;
+	background-color: #aaa;
+}
+
+.rotors_container .rotor ul.rotor_letters li.letter.visible_letter {
+	font-size: 28pt;
+	min-height: 50px;
+	vertical-align: middle;
+
+	display: inline;
+	-webkit-transition: all 0.7s ease-in;
+	-moz-transition: all 0.7s ease-in;
+	-ms-transition: all 0.7s ease-in;
+	-o-transition: all 0.7s ease-in;
+	transition: all 0.7s ease-in;
+}
+
+
+.rotors_container .rotor ul.rotor_letters li.letter {
+	display: none;
+}
+

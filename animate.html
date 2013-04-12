@@ -1,0 +1,22 @@
+<html>
+<head>
+	<title></title>
+	<script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+	<script>window.jQuery || document.write('<script src="assets/js/jquery-1.9.1.min.js")><\/script>')</script>
+	<script src="assets/js/jquery.blockUI.js"></script>
+	<script src="assets/js/raphael-min.js"></script>
+	<script src="assets/coffee/animate.js"></script>
+	<script src="assets/coffee/blockUI.js"></script>
+	<script type="text/javascript" charset="utf-8">
+            $(document).ready(function() {
+            	$('.b').click(function () {
+					var bl = new blockUI();
+					bl.display2(); 
+            	});
+            });;
+    </script>
+</head>
+<body>
+	<input type="button" value="A" class="b"></input>
+</body>
+</html>
