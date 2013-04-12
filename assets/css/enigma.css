@@ -77,7 +77,6 @@ a {
 
 .screen {
 	height: 10%;
-	border: 1px solid #555;
 	position: relative;
 }
 
@@ -93,6 +92,10 @@ a {
 	display: inline;
 }*/
 
+
+.rotors_container {
+	/*height: 10$;*/
+}
 
 .rotors_container .rotor {
 	display: inline;
@@ -114,7 +117,6 @@ a {
 .rotors_container .rotor ul.rotor_letters li.letter.visible_letter {
 	font-size: 20pt;
 	min-height: 50px;
-	border: 1px solid #000;
 	vertical-align: middle;
 
 	display: inline;
