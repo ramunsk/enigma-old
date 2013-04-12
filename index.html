@@ -1,95 +1,149 @@
+<!doctype html>
 <html>
 <head>
 	<title></title>
-	<link rel="stylesheet" type="text/css" href="assets/css/reset.css">
+	<link rel="stylesheet" type="text/css" href="assets/css/enigma.css">
 
 </head>
 <body>
-	<div class="lampboard">
-		<div class=row>
-			<input class="lamp" disabled="disabled" type="button" value="Q">
-			<input class="lamp" disabled="disabled" type="button" value="W">
-			<input class="lamp" disabled="disabled" type="button" value="E">
-			<input class="lamp" disabled="disabled" type="button" value="R">
-			<input class="lamp" disabled="disabled" type="button" value="T">
-			<input class="lamp" disabled="disabled" type="button" value="Z">
-			<input class="lamp" disabled="disabled" type="button" value="U">
-			<input class="lamp" disabled="disabled" type="button" value="I">
-			<input class="lamp" disabled="disabled" type="button" value="O">
+	<div class="sizer">
+		<div class="rotor-deck">
 		</div>
-		
-		
-		<div class="row">
-			<input class="lamp" disabled="disabled" type="button" value="A">
-			<input class="lamp" disabled="disabled" type="button" value="S">
-			<input class="lamp" disabled="disabled" type="button" value="D">
-			<input class="lamp" disabled="disabled" type="button" value="F">
-			<input class="lamp" disabled="disabled" type="button" value="G">
-			<input class="lamp" disabled="disabled" type="button" value="H">
-			<input class="lamp" disabled="disabled" type="button" value="J">
-			<input class="lamp" disabled="disabled" type="button" value="K">
+
+		<div class="lampboard">
+			<table>
+				<tr>
+					<td><span class="lamp" data-key="Q">Q</span></td>
+					<td></td>
+					<td><span class="lamp" data-key="W">W</span></td>
+					<td></td>
+					<td><span class="lamp" data-key="E">E</span></td>
+					<td></td>
+					<td><span class="lamp" data-key="R">R</span></td>
+					<td></td>
+					<td><span class="lamp" data-key="T">T</span></td>
+					<td></td>
+					<td><span class="lamp" data-key="Z">Z</span></td>
+					<td></td>
+					<td><span class="lamp" data-key="U">U</span></td>
+					<td></td>
+					<td><span class="lamp" data-key="I">I</span></td>
+					<td></td>
+					<td><span class="lamp" data-key="O">O</span></td>
+				</tr>
+				<tr>
+					<td></td>
+					<td><span class="lamp" data-key="A">A</span></td>
+					<td></td>
+					<td><span class="lamp" data-key="S">S</span></td>
+					<td></td>
+					<td><span class="lamp" data-key="D">D</span></td>
+					<td></td>
+					<td><span class="lamp" data-key="F">F</span></td>
+					<td></td>
+					<td><span class="lamp" data-key="G">G</span></td>
+					<td></td>
+					<td><span class="lamp" data-key="H">H</span></td>
+					<td></td>
+					<td><span class="lamp" data-key="J">J</span></td>
+					<td></td>
+					<td><span class="lamp" data-key="K">K</span></td>
+					<td></td>
+				</tr>
+				<tr>
+					<td><span class="lamp" data-key="P">P</span></td>
+					<td></td>
+					<td><span class="lamp" data-key="Y">Y</span></td>
+					<td></td>
+					<td><span class="lamp" data-key="X">X</span></td>
+					<td></td>
+					<td><span class="lamp" data-key="C">C</span></td>
+					<td></td>
+					<td><span class="lamp" data-key="V">V</span></td>
+					<td></td>
+					<td><span class="lamp" data-key="B">B</span></td>
+					<td></td>
+					<td><span class="lamp" data-key="N">N</span></td>
+					<td></td>
+					<td><span class="lamp" data-key="M">M</span></td>
+					<td></td>
+					<td><span class="lamp" data-key="L">L</span></td>
+					<td></td>
+				</tr>
+			</table>
 		</div>
-		
-		<div class="row">
-			<input class="lamp" disabled="disabled" type="button" value="P">
-			<input class="lamp" disabled="disabled" type="button" value="Y">
-			<input class="lamp" disabled="disabled" type="button" value="X">
-			<input class="lamp" disabled="disabled" type="button" value="C">
-			<input class="lamp" disabled="disabled" type="button" value="V">
-			<input class="lamp" disabled="disabled" type="button" value="B">
-			<input class="lamp" disabled="disabled" type="button" value="N">
-			<input class="lamp" disabled="disabled" type="button" value="M">
-			<input class="lamp" disabled="disabled" type="button" value="L">
+
+		<div class="keyboard">
+			<table>
+				<tr>
+					<td><span class="key" data-key="Q">Q</span></td>
+					<td></td>
+					<td><span class="key" data-key="W">W</span></td>
+					<td></td>
+					<td><span class="key" data-key="E">E</span></td>
+					<td></td>
+					<td><span class="key" data-key="R">R</span></td>
+					<td></td>
+					<td><span class="key" data-key="T">T</span></td>
+					<td></td>
+					<td><span class="key" data-key="Z">Z</span></td>
+					<td></td>
+					<td><span class="key" data-key="U">U</span></td>
+					<td></td>
+					<td><span class="key" data-key="I">I</span></td>
+					<td></td>
+					<td><span class="key" data-key="O">O</span></td>
+				</tr>
+				<tr>
+					<td></td>
+					<td><span class="key" data-key="A">A</span></td>
+					<td></td>
+					<td><span class="key" data-key="S">S</span></td>
+					<td></td>
+					<td><span class="key" data-key="D">D</span></td>
+					<td></td>
+					<td><span class="key" data-key="F">F</span></td>
+					<td></td>
+					<td><span class="key" data-key="G">G</span></td>
+					<td></td>
+					<td><span class="key" data-key="H">H</span></td>
+					<td></td>
+					<td><span class="key" data-key="J">J</span></td>
+					<td></td>
+					<td><span class="key" data-key="K">K</span></td>
+					<td></td>
+				</tr>
+				<tr>
+					<td><span class="key" data-key="P">P</span></td>
+					<td></td>
+					<td><span class="key" data-key="Y">Y</span></td>
+					<td></td>
+					<td><span class="key" data-key="X">X</span></td>
+					<td></td>
+					<td><span class="key" data-key="C">C</span></td>
+					<td></td>
+					<td><span class="key" data-key="V">V</span></td>
+					<td></td>
+					<td><span class="key" data-key="B">B</span></td>
+					<td></td>
+					<td><span class="key" data-key="N">N</span></td>
+					<td></td>
+					<td><span class="key" data-key="M">M</span></td>
+					<td></td>
+					<td><span class="key" data-key="L">L</span></td>
+				</tr>
+			</table>
 		</div>
+
+		<div class="screen">
+			<div class="input"></div>
+			<div class="output"></div>
+		</div>
+
+		<div>
+			<audio id="keystroke_sound" src="sounds/keystroke.wav" type="audio/wav" preload="auto"></audio>
+		</div> 
 	</div>
-
-
-	<div class="keyboard">
-		<div class="row">
-			<input class="key" type="button" value="Q" data-key="Q">
-			<input class="key" type="button" value="W" data-key="W">
-			<input class="key" type="button" value="E" data-key="E">
-			<input class="key" type="button" value="R" data-key="R">
-			<input class="key" type="button" value="T" data-key="T">
-			<input class="key" type="button" value="Z" data-key="Z">
-			<input class="key" type="button" value="U" data-key="U">
-			<input class="key" type="button" value="I" data-key="I">
-			<input class="key" type="button" value="O" data-key="O">
-		</div>
-		
-		<div class="row">
-			<input class="key" type="button" value="A" data-key="A">
-			<input class="key" type="button" value="S" data-key="S">
-			<input class="key" type="button" value="D" data-key="D">
-			<input class="key" type="button" value="F" data-key="F">
-			<input class="key" type="button" value="G" data-key="G">
-			<input class="key" type="button" value="H" data-key="H">
-			<input class="key" type="button" value="J" data-key="J">
-			<input class="key" type="button" value="K" data-key="K">
-		</div>
-		
-		<div class="row">
-			<input class="key" type="button" value="P" data-key="P">
-			<input class="key" type="button" value="Y" data-key="Y">
-			<input class="key" type="button" value="X" data-key="X">
-			<input class="key" type="button" value="C" data-key="C">
-			<input class="key" type="button" value="V" data-key="V">
-			<input class="key" type="button" value="B" data-key="B">
-			<input class="key" type="button" value="N" data-key="N">
-			<input class="key" type="button" value="M" data-key="M">
-			<input class="key" type="button" value="L" data-key="L">
-		</div>
-	</div>
-
-	<div class="screen">
-		<div class="input"></div>
-		<div class="output"></div>
-	</div>
-
-	<div>
-		<audio id="keystroke_sound" src="sounds/keystroke.wav" type="audio/wav" preload="auto"></audio>
-	</div> 
-
 	<script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
 	<script>window.jQuery || document.write('<script src="assets/js/jquery-1.9.1.min.js")><\/script>')</script>
 	<script src="assets/coffee/keyboard.js" type="text/javascript"></script>
