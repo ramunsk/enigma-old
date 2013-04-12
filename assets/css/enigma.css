@@ -22,6 +22,14 @@ a {
 	height: 30%;
 }
 
+
+.logo_container .logo {
+	float: right;
+	margin-top: 40px;
+	margin-right: 40px;
+	width: 20%;
+}
+
 .lampboard, .keyboard{
 	height: 30%;
 	position: relative;
@@ -94,12 +102,13 @@ a {
 
 
 .rotors_container {
-	/*height: 10$;*/
+	margin-left: 295px;
 }
 
 .rotors_container .rotor {
 	display: inline;
 	float: left;
+	margin-left: 20px;
 	width: 50px;
 }
 
@@ -110,12 +119,12 @@ a {
 .rotors_container .rotor ul.rotor_letters {
 	max-height: 50px;
 	overflow: hidden;
-	padding-left: 13px;
+	padding-left: 10px;
 	list-style: none;
 }
 
 .rotors_container .rotor ul.rotor_letters li.letter.visible_letter {
-	font-size: 20pt;
+	font-size: 28pt;
 	min-height: 50px;
 	vertical-align: middle;
 
