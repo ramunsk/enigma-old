@@ -19,9 +19,10 @@ class RotorDeck
 						ulElement = $(rotorElement).find('ul.rotor_letters')
 						currentLetterItem = $(ulElement).find('.visible_letter')
 
-						$(currentLetterItem).removeClass('visible_letter')
+						
 
 						if direction is 'F' #going forwards
+							$(currentLetterItem).removeClass('visible_letter')
 							document.getElementById('rotation_sound').play();
 							nextItem = $(currentLetterItem).next('li');
 							if $(nextItem).length > 0
@@ -29,8 +30,10 @@ class RotorDeck
 							else #overflow happened
 								$(ulElement).find('li:first-child').addClass('visible_letter')
 
-							affectedRotor.advanceForward()
+							#affectedRotor.advanceForward()
+
 						else if direction is 'B' #going backwards
+							$(currentLetterItem).removeClass('visible_letter')
 							document.getElementById('rotation_sound').play();
 							prevItem = $(currentLetterItem).prev('li');
 							if $(prevItem).length > 0
@@ -38,7 +41,7 @@ class RotorDeck
 							else #overflow happened
 								$(ulElement).find('li:last-child').addClass('visible_letter')
 
-							affectedRotor.advanceBackward()
+							#affectedRotor.advanceBackward()
 				)
 		)
 
