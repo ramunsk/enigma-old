@@ -57,6 +57,19 @@ class Rotor
 			raiseEvent "advancedForward"
 			raiseEvent "turnover" if prevPosition == knownRotor.turnover
 
+			#not the most elegant solution, but hey it's 05:32, what do you expect 
+			if (knownRotor.type is "I")
+				$($('.rotor_letters').find('li.visible_letter')[0]).removeClass('visible_letter')
+				$($('.rotor_letters').find('li:contains(' + currentPosition + ')')[0]).addClass('visible_letter')
+
+			if (knownRotor.type is "II")
+				$($('.rotor_letters').find('li.visible_letter')[1]).removeClass('visible_letter')
+				$($('.rotor_letters').find('li:contains(' + currentPosition + ')')[1]).addClass('visible_letter')
+
+			if (knownRotor.type is "III")
+				$($('.rotor_letters').find('li.visible_letter')[2]).removeClass('visible_letter')
+				$($('.rotor_letters').find('li:contains(' + currentPosition + ')')[2]).addClass('visible_letter')
+
 			return
 			
 		@advanceBackward = () ->
@@ -71,6 +84,20 @@ class Rotor
 			if !events.hasOwnProperty(event)
 				events[event] = []
 			events[event].push(callback)
+
+			#not the most elegant solution, but hey it's 05:32, what do you expect 
+			if (knownRotor.type is "I")
+				$($('.rotor_letters').find('li.visible_letter')[0]).removeClass('visible_letter')
+				$($('.rotor_letters').find('li:contains(' + currentPosition + ')')[0]).addClass('visible_letter')
+
+			if (knownRotor.type is "II")
+				$($('.rotor_letters').find('li.visible_letter')[1]).removeClass('visible_letter')
+				$($('.rotor_letters').find('li:contains(' + currentPosition + ')')[1]).addClass('visible_letter')
+
+			if (knownRotor.type is "III")
+				$($('.rotor_letters').find('li.visible_letter')[2]).removeClass('visible_letter')
+				$($('.rotor_letters').find('li:contains(' + currentPosition + ')')[2]).addClass('visible_letter')
+			
 			return
 
 @.Rotor = Rotor	
