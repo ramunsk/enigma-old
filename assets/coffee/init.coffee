@@ -14,3 +14,28 @@ machine = new Machine(
 	lampboard
 	screen
 )
+
+path =
+	input: "A"
+	rightRotorForward: "S - A"
+	middleRotorForward: "D - S"
+	leftRotorForward: "M - D"
+	reflectorFrom: "M"
+	reflectorTo: "C"
+	leftRotorBackward: "C - P"
+	middleRotorBackward: "P - K"
+	rightRotorBackward: "K - L"
+	output: "G"
+deck =
+	rightRotor: "III"
+	middleRotor: "II"
+	leftRotor: "I"
+	rightRotorPosition: "B"
+	middleRotorPosition: "A"
+	leftRotorPosition: "A"
+	reflector: "A"
+
+$('div.animate .button').click(() ->
+	bl = new blockUI()
+	bl.display path, deck
+)

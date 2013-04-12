@@ -1,43 +1,43 @@
 class animate
 	paper = null
 	config = 
-		fontSize: 60
+		fontSize: 30
 		fontFamily: "Arial, Helvetica, sans-serif"
-		canvasWidth: 1200
-		canvasHeight: 900
-		inputLetterX: 1100
-		inputLetterY: 320
-		rectangleRightX: 775
-		rectangleRightY: 150
-		rectangleWidth: 150
-		rectangleHeight: 300
+		canvasWidth: 800
+		canvasHeight: 600
+		inputLetterX: 770
+		inputLetterY: 160
+		rectangleRightX: 580
+		rectangleRightY: 50
+		rectangleWidth: 100
+		rectangleHeight: 200
 		rectangleBorder: 20
-		rotorTextInitialX: 850
-		rotorStep: 250
-		rotorNameY: 200
-		rotorTransformationY: 320
-		reflectorRectangleX: 20
-		reflectorRectangleY: 250
-		reflectorWidth: 150
-		reflectorHeight: 500
-		reflectorTextInitialX: 90
-		reflectorNameY: 300
-		reflectorTransformationX: 90
-		reflectorTransformationY: 470
-		arrowForwardInputX: 1050
-		arrowForwardRotorX: 765
-		arrowForwardY: 300
-		arrowBackwardX: 1050
-		arrowBackwardY: 680
-		arrowStep: 250
-		arrowLenght: 90
+		rotorTextInitialX: 630
+		rotorStep: 180
+		rotorNameY: 80
+		rotorTransformationY: 160
+		reflectorRectangleX: 30
+		reflectorRectangleY: 100
+		reflectorWidth: 100
+		reflectorHeight: 400
+		reflectorTextInitialX: 80
+		reflectorNameY: 130
+		reflectorTransformationX: 80
+		reflectorTransformationY: 250
+		arrowForwardInputX: 750
+		arrowForwardRotorX: 570
+		arrowForwardY: 150
+		arrowBackwardX: 750
+		arrowBackwardY: 450
+		arrowStep: 190
+		arrowLenght: 30
 	constructor : (element) ->
 		paper = Raphael document.getElementById(element), config.canvasWidth, config.canvasHeight
 		@updateConfig = () ->
-			config.rectangleRightY = 530
-			config.rotorNameY = 580
-			config.rotorTransformationY = 700
-			config.inputLetterY = 700
+			config.rectangleRightY = 350
+			config.rotorNameY = 380
+			config.rotorTransformationY = 460
+			config.inputLetterY = 460
 		@resetConfig = () ->
 			config.rectangleRightY = 150
 			config.rotorNameY = 200
@@ -58,7 +58,7 @@ class animate
 		@drawRotor = (rotor, rotorPosition, offset, backward) ->
 			@drawRect config.rectangleRightX - offset, config.rectangleRightY, config.rectangleWidth, config.rectangleHeight, config.rectangleBorder
 			@writeChar config.rotorTextInitialX - offset, config.rotorNameY, rotor
-			@writeChar config.rotorTextInitialX - offset, config.rotorNameY - 100 , rotorPosition
+			@writeChar config.rotorTextInitialX - offset, config.rotorNameY - 50 , rotorPosition
 
 		
 		@drawRotorTransformation = (text, offset) ->
@@ -132,26 +132,6 @@ class animate
 
 		#play all
 		@play = (path, deck) ->
-			path =
-				input: "A"
-				rightRotorForward: "S - A"
-				middleRotorForward: "D - S"
-				leftRotorForward: "M - D"
-				reflectorFrom: "M"
-				reflectorTo: "C"
-				leftRotorBackward: "C - P"
-				middleRotorBackward: "P - K"
-				rightRotorBackward: "K - L"
-				output: "G"
-			deck =
-				rightRotor: "III"
-				middleRotor: "II"
-				leftRotor: "I"
-				rightRotorPosition: "B"
-				middleRotorPosition: "A"
-				leftRotorPosition: "A"
-				reflector: "A"
-			
 			@drawInputChar path.input
 			
 			@drawArrow config.arrowForwardInputX, config.arrowForwardY, config.arrowLenght
@@ -159,34 +139,34 @@ class animate
 			@drawRightRotor deck.rightRotor, deck.rightRotorPosition
 			@drawRightRotorTransformation path.rightRotorForward
 
-			@drawArrow config.arrowForwardRotorX, config.arrowForwardY, config.arrowLenght - 40
+			@drawArrow config.arrowForwardRotorX, config.arrowForwardY, config.arrowLenght
 
 			@drawMiddleRotor deck.middleRotor, deck.middleRotorPosition
 			@drawMiddleRotorTransformation path.middleRotorForward
 
-			@drawArrow config.arrowForwardRotorX - config.arrowStep, config.arrowForwardY, config.arrowLenght - 40
+			@drawArrow config.arrowForwardRotorX - config.arrowStep + 10, config.arrowForwardY, config.arrowLenght
 
 			@drawLeftRotor deck.leftRotor, deck.leftRotorPosition
 			@drawLeftRotorTransformation path.leftRotorForward
 
-			@drawArrow config.arrowForwardRotorX - config.arrowStep * 2, config.arrowForwardY, config.arrowLenght - 40
+			@drawArrow config.arrowForwardRotorX - config.arrowStep * 2 + 20, config.arrowForwardY, config.arrowLenght
 
 			@drawReflector deck.reflector
 			@drawReflectorTransformation path.reflectorFrom, path.reflectorTo
 
-			@drawBackwardArrow config.arrowForwardRotorX - config.arrowStep * 2 - 20, config.arrowBackwardY, config.arrowLenght - 40
+			@drawBackwardArrow config.arrowForwardRotorX - config.arrowStep * 2, config.arrowBackwardY, config.arrowLenght
 
 			@updateConfig()
 
 			@drawLeftRotor deck.leftRotor, "", false
 			@drawLeftRotorTransformation path.leftRotorBackward
 
-			@drawBackwardArrow config.arrowForwardRotorX - config.arrowStep - 20, config.arrowBackwardY, config.arrowLenght - 40
+			@drawBackwardArrow config.arrowForwardRotorX - config.arrowStep - 20, config.arrowBackwardY, config.arrowLenght
 
 			@drawMiddleRotor deck.middleRotor, "", false
 			@drawMiddleRotorTransformation path.middleRotorBackward
 
-			@drawBackwardArrow config.arrowForwardRotorX - 20, config.arrowBackwardY, config.arrowLenght - 40
+			@drawBackwardArrow config.arrowForwardRotorX - 20, config.arrowBackwardY, config.arrowLenght
 
 			@drawRightRotor deck.rightRotor, "", false
 			@drawRightRotorTransformation path.rightRotorBackward

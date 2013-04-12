@@ -1,11 +1,11 @@
 $ = jQuery
 class blockUI
 	constructor: () ->
-		@display2 = () ->
+		@display = (path, deck) ->
 			$.blockUI { 
 				message: $('<div id="canvas"></div>') 
 				css: { 
-	                width: '1200px',
+	                width: '800px',
 	                top: '50px', 
 	                left: '100px',
 	                border: 'none', 
@@ -21,6 +21,6 @@ class blockUI
 				$.unblockUI
 			);
 			an = new animate "canvas"
-			an.play()
+			an.play path, deck
 
 @blockUI = blockUI
