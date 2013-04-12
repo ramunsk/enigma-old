@@ -24,7 +24,7 @@ path =
 	reflectorTo: "C"
 	leftRotorBackward: "C - P"
 	middleRotorBackward: "P - K"
-	rightRotorBackward: "K - L"
+	rightRotorBackward: "K - G"
 	output: "G"
 deck =
 	rightRotor: "III"
