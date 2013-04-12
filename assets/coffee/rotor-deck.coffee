@@ -14,10 +14,29 @@ class RotorDeck
 						rotorPosition = $(@).data('position')
 						direction = $(@).data('direction')
 						affectedRotor = that["rotor#{rotorPosition}"]
-						if direction is 'F'
+
+						rotorElement = $(@).closest('.rotor')
+						ulElement = $(rotorElement).find('ul.rotor_letters')
+						currentLetterItem = $(ulElement).find('.visible_letter')
+
+						$(currentLetterItem).removeClass('visible_letter')
+
+						if direction is 'F' #going forwards
+							nextItem = $(currentLetterItem).next('li');
+							if $(nextItem).length > 0
+								$(nextItem).addClass('visible_letter')
+							else #overflow happened
+								$(ulElement).find('li:first-child').addClass('visible_letter')
+
 							affectedRotor.advanceForward()
 							console.log('FF')
-						else if direction is 'B'
+						else if direction is 'B' #going backwards
+							prevItem = $(currentLetterItem).prev('li');
+							if $(prevItem).length > 0
+								$(prevItem).addClass('visible_letter')
+							else #overflow happened
+								$(ulElement).find('li:last-child').addClass('visible_letter')
+
 							affectedRotor.advanceBackward()
 							console.log('BB')
 				)
