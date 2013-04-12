@@ -4,9 +4,9 @@ class animate
 		fontSize: 60
 		fontFamily: "Arial, Helvetica, sans-serif"
 		canvasWidth: 1200
-		canvasHeight: 1100
+		canvasHeight: 900
 		inputLetterX: 1100
-		inputLetterY: 300
+		inputLetterY: 320
 		rectangleRightX: 775
 		rectangleRightY: 150
 		rectangleWidth: 150
@@ -14,30 +14,35 @@ class animate
 		rectangleBorder: 20
 		rotorTextInitialX: 850
 		rotorStep: 250
-		rotorNameY: 180
-		rotorTransformationY: 300
+		rotorNameY: 200
+		rotorTransformationY: 320
 		reflectorRectangleX: 20
 		reflectorRectangleY: 250
 		reflectorWidth: 150
 		reflectorHeight: 500
 		reflectorTextInitialX: 90
-		reflectorNameY: 280
+		reflectorNameY: 300
 		reflectorTransformationX: 90
-		reflectorTransformationY: 450
+		reflectorTransformationY: 470
 		arrowForwardInputX: 1050
 		arrowForwardRotorX: 765
 		arrowForwardY: 300
 		arrowBackwardX: 1050
-		arrowBackwardY: 700
+		arrowBackwardY: 680
 		arrowStep: 250
 		arrowLenght: 90
 	constructor : (element) ->
 		paper = Raphael document.getElementById(element), config.canvasWidth, config.canvasHeight
 		@updateConfig = () ->
-			config.rectangleRightY = 550
+			config.rectangleRightY = 530
 			config.rotorNameY = 580
 			config.rotorTransformationY = 700
 			config.inputLetterY = 700
+		@resetConfig = () ->
+			config.rectangleRightY = 150
+			config.rotorNameY = 200
+			config.rotorTransformationY = 320
+			config.inputLetterY = 320
 		@writeChar = (x, y, char) ->
 			char = paper.text x, y, char
 			char.attr { "font-size": config.fontSize, "font-family": config.fontFamily }
@@ -87,9 +92,9 @@ class animate
 			@writeChar config.reflectorTransformationX, config.reflectorTransformationY + 100, to
 
 		@animateElement = (element) ->
-			anim = Raphael.animation {opacity: 1}, 100
-			wait = Raphael.animation({opacity: 0}, 5, () -> this.animate anim.repeat 10)
-			element.animate wait
+			# anim = Raphael.animation {opacity: 1}, 100
+			# wait = Raphael.animation({opacity: 0}, 5, () -> this.animate anim.repeat 10)
+			# element.animate wait
 		#paths
 		@drawPaths = () ->
 			
@@ -189,5 +194,7 @@ class animate
 			@drawBackwardArrow config.arrowForwardInputX - 20, config.arrowBackwardY, config.arrowLenght
 
 			@drawInputChar path.output
+
+			@resetConfig()
 
 @animate = animate
