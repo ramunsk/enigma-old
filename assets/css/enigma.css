@@ -64,6 +64,47 @@ a {
 }
 
 
+/*.rotors_container .rotor,
+.rotors_container .rotor .rottor_letters {
+	display: inline;
+}*/
+
+
+.rotors_container .rotor {
+	display: inline;
+	float: left;
+	width: 50px;
+}
+
+.rotors_container .rotor .rotor_button {
+	display: inline;
+}
+
+.rotors_container .rotor ul.rotor_letters {
+	max-height: 50px;
+	overflow: hidden;
+	padding-left: 13px;
+	list-style: none;
+}
+
+.rotors_container .rotor ul.rotor_letters li.letter.visible_letter {
+	font-size: 20pt;
+	min-height: 50px;
+	border: 1px solid #000;
+	vertical-align: middle;
+
+	display: inline;
+	-webkit-transition: all 0.7s ease-in;
+	-moz-transition: all 0.7s ease-in;
+	-ms-transition: all 0.7s ease-in;
+	-o-transition: all 0.7s ease-in;
+	transition: all 0.7s ease-in;
+}
+
+
+.rotors_container .rotor ul.rotor_letters li.letter {
+	display: none;
+}
 
 
 /*.keyboard .row:nth-child(2),
